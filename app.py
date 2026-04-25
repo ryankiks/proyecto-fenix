@@ -23,8 +23,19 @@ def main():
     nombre = input("Introduce el nombre del jugador de fútbol: ")
     estadisticas = generar_estadisticas()
     guardar_jugador(nombre, estadisticas)
+    
     print(f"\n✅ Jugador '{nombre}' guardado en jugadores.txt")
-    print(f"   Goles: {estadisticas['Goles']}")
+    
+    # Accedemos a los goles dentro del diccionario 'estadisticas'
+    goles = estadisticas["Goles"] 
+    print(f"   Goles: {goles}")
+
+    # Ahora el IF está dentro de main y usa la variable correcta
+    if goles > 20:
+        print("   ⭐ ¡Es un delantero de élite!")
+    else:
+        print("   🏃 Es un buen jugador, pero necesita mejorar su puntería.")
+
     print(f"   Asistencias: {estadisticas['Asistencias']}")
     print(f"   Velocidad: {estadisticas['Velocidad']} km/h")
 
