@@ -3,20 +3,17 @@ import random
 
 app = Flask(__name__)
 
-@app.route('/')
-def home():
-    # Generamos datos aleatorios como en tu script original
-    nombre = random.choice(["Kike", "Joaquín", "Messi", "Haaland", "Mbappé"])
-    goles = random.randint(0, 50)
-    asistencias = random.randint(0, 20)
-    velocidad = round(random.uniform(25.0, 38.0), 1)
+# Simulación de Base de Datos de Informes
+INFORMES = [
+    {"id": 1, "tipo": "Jugador", "titulo": "Análisis Individual: Jude Bellingham", "precio": 15.00, "color": "#16a085"},
+    {"id": 2, "tipo": "Comparativo", "titulo": "Haaland vs Mbappé: Duelo de Killers", "precio": 25.00, "color": "#2980b9"},
+    {"id": 3, "tipo": "Partido", "titulo": "Final Champions: Análisis Táctico", "precio": 10.00, "color": "#8e44ad"},
+    {"id": 4, "tipo": "Competición", "titulo": "Guía Completa Euro 2024", "precio": 45.00, "color": "#d35400"}
+]
 
-    # Enviamos los datos a la plantilla HTML
-    return render_template('index.html', 
-                           nombre=nombre, 
-                           goles=goles, 
-                           asistencias=asistencias, 
-                           velocidad=velocidad)
+@app.route('/')
+def catalogo():
+    return render_template('index.html', informes=INFORMES)
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5050)
