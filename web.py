@@ -11,7 +11,7 @@ INFORMES = [
         "precio": 15, 
         "color": "#1db954", # Verde Bellingham
         "img": "https://i.ibb.co/bRNCv2Bq/informe-jugador.png", # Aquí pondremos la URL de tu imagen 1
-        "pdf_url": "#"
+        "archivo": "muestra_jugador.pdf"
     },
     {
         "id": 2, 
@@ -21,7 +21,7 @@ INFORMES = [
         "precio": 25, 
         "color": "#3498db", # Azul Haaland
         "img": "https://i.ibb.co/gLtk9bG5/informe-comparativo.png", # Aquí la URL de tu imagen 2
-        "pdf_url": "#"
+        "archivo": "#"
     },
     {
         "id": 3, 
@@ -31,7 +31,7 @@ INFORMES = [
         "precio": 10, 
         "color": "#9b59b6", # Morado Champions
         "img": "https://i.ibb.co/3YjJgnTW/informe-partido.png", # Aquí la URL de tu imagen 3
-        "pdf_url": "#"
+        "archivo": "#"
     },
     {
         "id": 4, 
@@ -41,7 +41,7 @@ INFORMES = [
         "precio": 45, 
         "color": "#e67e22", # Naranja Euro
         "img": "https://i.ibb.co/qMBQkT2K/informe-competicion.png", # Aquí la URL de tu imagen 4
-        "pdf_url": "#"
+        "archivo": "#"
     }
 ]
 
