@@ -7,7 +7,7 @@ INFORMES_BASE = [
     {
         "id": 1, 
         "tipo": "JUGADOR", 
-        "titulo": "SCOUTING: JUDE BELLINGHAM", 
+        "titulo": "SCOUTING: Jugadores", 
         "descripcion": "Mapa de calor, zonas de influencia y métricas de llegada.", 
         "precio": 15, 
         "color": "#1db954",
@@ -17,7 +17,7 @@ INFORMES_BASE = [
     {
         "id": 2, 
         "tipo": "COMPARATIVO", 
-        "titulo": "DUELO: HAALAND VS MBAPPÉ", 
+        "titulo": "Comparativa de jugadores", 
         "descripcion": "Comparativa de eficiencia en remate y aceleración punta.", 
         "precio": 25, 
         "color": "#3498db",
@@ -27,7 +27,7 @@ INFORMES_BASE = [
     {
         "id": 3, 
         "tipo": "PARTIDO", 
-        "titulo": "FINAL CHAMPIONS", 
+        "titulo": "Pre y post partido", 
         "descripcion": "Estudio de las transiciones defensivas y el bloque bajo.", 
         "precio": 10, 
         "color": "#9b59b6",
@@ -37,7 +37,7 @@ INFORMES_BASE = [
     {
         "id": 4, 
         "tipo": "COMPETICIÓN", 
-        "titulo": "Mundial 2026", 
+        "titulo": "Competición", 
         "descripcion": "Análisis de todas las selecciones que participarán en el torneo", 
         "precio": 45, 
         "color": "#e67e22",
