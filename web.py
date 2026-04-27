@@ -3,10 +3,46 @@ from flask import Flask, render_template
 app = Flask(__name__)
 
 INFORMES = [
-    {"id": 1, "tipo": "Jugador", "titulo": "Scouting: Jude Bellingham", "descripcion": "Informe técnico detallado sobre su impacto en el área rival.", "precio": 15.00, "color": "#16a085"},
-    {"id": 2, "tipo": "Comparativo", "titulo": "Duelo: Haaland vs Mbappé", "descripcion": "Comparativa de métricas de finalización y xG en 2024.", "precio": 25.00, "color": "#2980b9"},
-    {"id": 3, "tipo": "Partido", "titulo": "Análisis: Final Champions", "descripcion": "Estructuras tácticas y debilidades explotadas por el ganador.", "precio": 10.00, "color": "#8e44ad"},
-    {"id": 4, "tipo": "Competición", "titulo": "Guía: Euro 2024", "descripcion": "Análisis de las 24 selecciones y jugadores revelación.", "precio": 45.00, "color": "#d35400"}
+    {
+        "id": 1, 
+        "tipo": "JUGADOR", 
+        "titulo": "SCOUTING: JUDE BELLINGHAM", 
+        "descripcion": "Mapa de calor, zonas de influencia y métricas de llegada.", 
+        "precio": 15, 
+        "color": "#1db954", # Verde Bellingham
+        "img": "https://i.ibb.co/bRNCv2Bq/informe-jugador.png", # Aquí pondremos la URL de tu imagen 1
+        "pdf_url": "#"
+    },
+    {
+        "id": 2, 
+        "tipo": "COMPARATIVO", 
+        "titulo": "DUELO: HAALAND VS MBAPPÉ", 
+        "descripcion": "Comparativa de eficiencia en remate y aceleración punta.", 
+        "precio": 25, 
+        "color": "#3498db", # Azul Haaland
+        "img": "https://i.ibb.co/gLtk9bG5/informe-comparativo.png", # Aquí la URL de tu imagen 2
+        "pdf_url": "#"
+    },
+    {
+        "id": 3, 
+        "tipo": "PARTIDO", 
+        "titulo": "FINAL CHAMPIONS", 
+        "descripcion": "Estudio de las transiciones defensivas y el bloque bajo.", 
+        "precio": 10, 
+        "color": "#9b59b6", # Morado Champions
+        "img": "https://i.ibb.co/3YjJgnTW/informe-partido.png", # Aquí la URL de tu imagen 3
+        "pdf_url": "#"
+    },
+    {
+        "id": 4, 
+        "tipo": "COMPETICIÓN", 
+        "titulo": "Mundial 2026", 
+        "descripcion": "Análisis de todas las selecciones que participarán en el torneo", 
+        "precio": 45, 
+        "color": "#e67e22", # Naranja Euro
+        "img": "https://i.ibb.co/qMBQkT2K/informe-competicion.png", # Aquí la URL de tu imagen 4
+        "pdf_url": "#"
+    }
 ]
 
 @app.route('/')

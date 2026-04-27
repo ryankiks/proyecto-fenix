@@ -2,40 +2,92 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Marketplace de Informes | Proyecto Fénix</title>
+    <title>BeSoccer Reports Premium</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body { font-family: 'Segoe UI', sans-serif; background-color: #f4f7f6; margin: 0; padding: 40px; }
-        .container { max-width: 1200px; margin: auto; }
-        h1 { text-align: center; color: #2c3e50; margin-bottom: 40px; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
-        .card { background: white; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); overflow: hidden; transition: transform 0.3s; display: flex; flex-direction: column; }
-        .card:hover { transform: translateY(-10px); }
-        .card-header { padding: 15px; color: white; font-weight: bold; text-transform: uppercase; font-size: 12px; }
-        .card-body { padding: 20px; flex-grow: 1; }
-        .card-title { font-size: 18px; color: #2c3e50; margin: 0 0 10px 0; min-height: 40px; }
-        .description { color: #7f8c8d; font-size: 14px; margin-bottom: 15px; line-height: 1.4; }
-        .price { font-size: 22px; font-weight: bold; color: #16a085; margin-bottom: 15px; }
-        .btn-buy { background: #2c3e50; color: white; text-align: center; padding: 12px; text-decoration: none; border-radius: 0 0 12px 12px; font-weight: bold; transition: background 0.3s; cursor: pointer; border: none; width: 100%; }
-        .btn-buy:hover { background: #16a085; }
+        :root { --primary: #1db954; --dark: #0f172a; --card-bg: #1e293b; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--dark); margin: 0; padding: 40px; color: white; }
+        
+        .container { max-width: 1100px; margin: auto; }
+        h1 { text-align: center; font-size: 2.2rem; margin-bottom: 40px; letter-spacing: -1px; }
+
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+        
+        .card { 
+            background: var(--card-bg); border-radius: 20px; overflow: hidden; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5); transition: 0.3s;
+            display: flex; flex-direction: column; border: 1px solid rgba(255,255,255,0.1);
+        }
+        .card:hover { transform: scale(1.02); border-color: var(--primary); }
+
+        .image-container { position: relative; height: 220px; overflow: hidden; }
+        .image-container img { width: 100%; height: 100%; object-fit: cover; }
+
+        .price-premium {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #ffffff;
+            color: #0f172a; /* Azul muy oscuro para contraste */
+            padding: 6px 16px;
+            border-radius: 12px; /* Un poco menos redondeado para que parezca una etiqueta de BeSoccer */
+            font-weight: 900;
+            font-size: 1.3rem;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15); /* Sombra más profunda para que "flote" */
+            border: 2px solid #16a085; /* Borde con el verde BeSoccer */
+            z-index: 10;
+        }
+
+        .currency {
+            font-size: 0.9rem;
+            margin-left: 2px;
+            color: #64748b; /* El símbolo de euro en un gris suave para que resalte el número */
+        }
+
+        .card-body { padding: 25px; flex-grow: 1; }
+        .card-title { font-size: 1.2rem; margin: 0 0 10px 0; font-weight: 800; color: #f8fafc; }
+        .description { color: #94a3b8; font-size: 0.85rem; line-height: 1.5; margin-bottom: 20px; }
+
+        .actions { padding: 0 25px 25px; display: grid; grid-template-columns: 1fr 1.5fr; gap: 10px; }
+        
+        .btn { padding: 10px; border-radius: 10px; text-decoration: none; text-align: center; font-weight: 700; font-size: 0.8rem; cursor: pointer; transition: 0.2s; border: none; }
+        .btn-sample { background: rgba(255,255,255,0.1); color: white; }
+        .btn-sample:hover { background: rgba(255,255,255,0.2); }
+        .btn-buy { background: var(--primary); color: #000; }
+        .btn-buy:hover { background: #1ed760; }
+        .category-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(4px); /* Efecto cristal */
+            color: white;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 10px;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>📑 Repositorio de Informes BeSoccer</h1>
+        <h1>REPOSITORIO DE INFORMES</h1>
         <div class="grid">
             {% for info in informes %}
             <div class="card">
-                <div class="card-header" style="background-color: {{ info.color }}">
-                    {{ info.tipo }}
+                <div class="image-container">
+                    <img src="{{ info.img }}" alt="Portada">
+                    <div class="price-premium">{{ info.precio }}<span class="currency">€</span></div>
                 </div>
                 <div class="card-body">
                     <h2 class="card-title">{{ info.titulo }}</h2>
                     <p class="description">{{ info.descripcion }}</p>
-                    <p class="price">{{ info.precio }}€</p>
                 </div>
-                <button class="btn-buy" onclick="alert('Iniciando compra de: {{ info.titulo }}')">
-                    COMPRAR INFORME
-                </button>
+                <div class="actions">
+                    <a href="{{ info.pdf_url }}" class="btn btn-sample">Muestra</a>
+                    <button class="btn btn-buy" onclick="alert('Iniciando pago...')">Comprar</button>
+                </div>
             </div>
             {% endfor %}
         </div>
