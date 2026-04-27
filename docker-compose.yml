@@ -3,6 +3,8 @@ services:
     image: python:3.11-slim
     volumes:
       - .:/app
+    ports:
+      - "5050:5050"
     working_dir: /app
     tty: true
     stdin_open: true

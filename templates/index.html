@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Fénix Stats | BeSoccer Style</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f0f2f5; margin: 0; display: flex; justify-content: center; align-items: center; height: 100vh; }
+        .card { background: white; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); width: 350px; overflow: hidden; text-align: center; border-top: 8px solid #16a085; }
+        .header { background: #16a085; color: white; padding: 20px; }
+        .header h1 { margin: 0; font-size: 24px; }
+        .stats-container { padding: 20px; }
+        .stat-row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #eee; }
+        .stat-label { font-weight: bold; color: #7f8c8d; }
+        .stat-value { color: #2c3e50; font-size: 18px; font-weight: bold; }
+        .elite { color: #f1c40f; font-size: 12px; font-weight: bold; text-transform: uppercase; margin-top: 10px; display: block; }
+        .footer { background: #2c3e50; color: #bdc3c7; padding: 10px; font-size: 12px; }
+        button { background: #16a085; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; margin-top: 15px; transition: 0.3s; }
+        button:hover { background: #1abc9c; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="header">
+            <h1>{{ nombre }}</h1>
+            {% if goles > 20 %}
+            <span class="elite">⭐ Delantero de Élite ⭐</span>
+            {% endif %}
+        </div>
+        <div class="stats-container">
+            <div class="stat-row"><span class="stat-label">Goles</span><span class="stat-value">{{ goles }}</span></div>
+            <div class="stat-row"><span class="stat-label">Asistencias</span><span class="stat-value">{{ asistencias }}</span></div>
+            <div class="stat-row"><span class="stat-label">Velocidad</span><span class="stat-value">{{ velocidad }} km/h</span></div>
+            <button onclick="window.location.reload()">Generar otro jugador</button>
+        </div>
+        <div class="footer">Proyecto Fénix - BeSoccer Lab</div>
+    </div>
+</body>
+</html>
