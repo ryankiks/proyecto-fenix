@@ -80,7 +80,40 @@
             backdrop-filter: blur(8px); /* Desenfoca el fondo de malla */
             border-bottom: 1px solid rgba(203, 213, 225, 0.5); /* Línea divisoria suave */
             
-        }   
+        } 
+        .logo-scoutic {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            gap: 12px;
+            padding: 10px 0;
+        }
+
+        .logo-scoutic img {
+            height: 30px; /* Tamaño controlado */
+            width: auto;
+            display: block;
+            border: none;
+            outline: none;
+        }
+
+        .brand-name {
+            font-weight: 900;
+            font-size: 1.6rem;
+            color: #0f172a; /* Azul oscuro */
+            letter-spacing: -0.5px;
+            line-height: 1;
+        }
+
+        .highlight {
+            color: #16a085; /* Verde BeSoccer Pro */
+        }
+
+        /* Si la imagen no carga, que no se vea el cuadro con el icono roto */
+        .logo-scoutic img:not([src]) {
+            visibility: hidden;
+            width: 0;
+        }  
         .pro-link {
             text-decoration: none;
             color: #16a085; /* Verde BeSoccer Pro */
@@ -128,10 +161,10 @@
 <body>
     <nav class="top-bar">
         <div class="external-links">
-            <a href="https://pro.besoccer.com" target="_blank" class="pro-link-logo">
-                <img src="{{ url_for('static', filename='images/logo-pro.png') }}" alt="BeSoccer Pro">
+            <a href="/scoutic" class="logo-scoutic">
+                <img src="{{ url_for('static', filename='img/logo-pro.png') }}" alt="">
+                <span class="brand-name">SCOUT<span class="highlight">IC</span></span>
             </a>
-            <a href="/scoutic" class="logo-scoutic">SCOUT<span>IC</span></a>
         </div>
         <div class="global-lang-selector">
             <a href="/?lang=es" class="lang-link {{ 'active' if lang == 'es' }}">ESP</a>
@@ -161,7 +194,7 @@
             {% for info in informes %}
             <div class="card">
                 <div class="image-container">
-                    <img src="{{ info.img }}" alt="Portada">
+                    <img src="{{ info.img }}" alt="{{ info.titulo }}">
                     <div class="price-premium">{{ info.precio }}<span class="currency">€</span></div>
                 </div>
                 <div class="card-body">
@@ -169,9 +202,7 @@
                     <p class="description">{{ info.descripcion }}</p>
                 </div>
                 <div class="actions">
-                    <a href="{{ url_for('static', filename='muestras/' + info.archivo_final) }}"
-                       class="btn btn-sample" download onclick="showThanks(event)">
-                       {{ textos.muestra }}
+                    <a href="{{ url_for('static', filename='muestras/' + info.archivo_final) }}" class="btn btn-sample" download onclick="showThanks(event)"> {{ textos.muestra }}
                     </a>
                     <button class="btn btn-buy" onclick="alert('Iniciando pago...')">{{ textos.comprar }}</button>
                 </div>
