@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 from deep_translator import GoogleTranslator
 
 app = Flask(__name__)
@@ -110,6 +110,29 @@ def crm():
     except Exception as e:
         print(f"Error traducción CRM: {e}")
         return render_template('scoutic.html', jugadores=JUGADORES_SCOUTIC, lang='es', textos=textos_scoutic)
+
+
+@app.route('/scoutic/nuevo', methods=['POST'])
+def nuevo_jugador():
+    # 1. Recogemos los datos que vienen del formulario del HTML
+    nombre = request.form.get('nombre')
+    posicion = request.form.get('posicion')
+    equipo = request.form.get('equipo')
+
+    # 2. Creamos el diccionario del nuevo jugador
+    nuevo = {
+        "nombre": nombre,
+        "posicion": posicion,
+        "equipo": equipo,
+        "estado": "Pendiente"
+    }
+    
+    # 3. ¡ESTA ES LA LÍNEA QUE FALTABA! 
+    # Añade el jugador al principio de la lista para que lo veas arriba en la tabla
+    JUGADORES_SCOUTIC.insert(0, nuevo)
+    
+    # 4. Volvemos al CRM
+    return redirect(url_for('crm'))
 
 # --- BLOQUE DE ARRANQUE ---
 if __name__ == "__main__":

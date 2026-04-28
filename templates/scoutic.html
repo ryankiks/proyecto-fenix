@@ -58,8 +58,35 @@
 
     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
         <h2 style="color:var(--dark-bg); margin:0;">{{ textos.titulo_crm }}</h2>
-        <a href="#" class="btn-new"><i class="fa-solid fa-plus"></i> {{ textos.nuevo_jugador }}</a>
+        <a href="javascript:void(0)" class="btn-new" onclick="abrirModal()"><i class="fa-solid fa-plus"></i> {{ textos.nuevo_jugador }}</a>
     </div>
+
+    <div id="modalInforme" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); z-index:1000; align-items:center; justify-content:center;">
+        <div style="background:white; padding:30px; border-radius:15px; width:400px; position:relative;">
+            <h3 style="color:#0f172a; margin-top:0;">Crear Nuevo Informe</h3>
+            <form action="/scoutic/nuevo" method="POST">
+                <div style="margin-bottom:15px;">
+                    <label style="display:block; font-size:0.8rem; font-weight:bold;">Nombre del Jugador</label>
+                    <input type="text" name="nombre" required style="width:100%; padding:8px; border:1px solid #ddd; border-radius:5px;">
+                </div>
+                <div style="margin-bottom:15px;">
+                    <label style="display:block; font-size:0.8rem; font-weight:bold;">Posición</label>
+                    <input type="text" name="posicion" placeholder="Ej: MCO, DC..." required style="width:100%; padding:8px; border:1px solid #ddd; border-radius:5px;">
+                </div>
+                <div style="margin-bottom:15px;">
+                    <label style="display:block; font-size:0.8rem; font-weight:bold;">Equipo</label>
+                    <input type="text" name="equipo" required style="width:100%; padding:8px; border:1px solid #ddd; border-radius:5px;">
+                </div>
+                <button type="submit" class="btn-new" style="width:100%; border:none; cursor:pointer;">Guardar en Scoutic</button>
+                <button type="button" onclick="cerrarModal()" style="width:100%; background:none; border:none; color:#64748b; margin-top:10px; cursor:pointer;">Cancelar</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+    function abrirModal() { document.getElementById('modalInforme').style.display = 'flex'; }
+    function cerrarModal() { document.getElementById('modalInforme').style.display = 'none'; }
+    </script>
 
     <table>
         <thead>
