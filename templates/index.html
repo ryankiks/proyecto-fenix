@@ -79,6 +79,7 @@
             background: rgba(248, 250, 252, 0.8); /* Mismo color del body pero con transparencia */
             backdrop-filter: blur(8px); /* Desenfoca el fondo de malla */
             border-bottom: 1px solid rgba(203, 213, 225, 0.5); /* Línea divisoria suave */
+            
         }   
         .pro-link {
             text-decoration: none;
@@ -130,6 +131,7 @@
             <a href="https://pro.besoccer.com" target="_blank" class="pro-link-logo">
                 <img src="{{ url_for('static', filename='images/logo-pro.png') }}" alt="BeSoccer Pro">
             </a>
+            <a href="/scoutic" class="logo-scoutic">SCOUT<span>IC</span></a>
         </div>
         <div class="global-lang-selector">
             <a href="/?lang=es" class="lang-link {{ 'active' if lang == 'es' }}">ESP</a>
@@ -167,7 +169,7 @@
                     <p class="description">{{ info.descripcion }}</p>
                 </div>
                 <div class="actions">
-                    <a href="{{ url_for('static', filename='muestras/' + info.archivo) }}" 
+                    <a href="{{ url_for('static', filename='muestras/' + info.archivo_final) }}"
                        class="btn btn-sample" download onclick="showThanks(event)">
                        {{ textos.muestra }}
                     </a>
